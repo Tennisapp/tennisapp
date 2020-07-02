@@ -25,6 +25,13 @@ public class TennisInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request,
             HttpServletResponse response, Object handler) throws Exception {
 		
+		response.setHeader("Access-Control-Allow-Origin", "*");
+	    response.setHeader("Access-Control-Allow-Methods",
+	            "POST, GET, OPTIONS,PUT, HEAD, DELETE");
+	    response.setHeader("Access-Control-Max-Age", "3600");
+	    response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+	    response.setHeader("Access-Control-Allow-Credentials", "true");
+		
 		 String uri = request.getRequestURI();
 		
 		 log.info("uri> "+uri);
@@ -40,7 +47,7 @@ public class TennisInterceptor implements HandlerInterceptor{
 			return true;
 		}
 		else{
-			 if(uri.startsWith("/TENNISAPP/upcomingtournament")|| uri.startsWith("/TENNISAPP/getPlayerResultsByPlayerId")||uri.startsWith("/TENNISAPP/getRegisteredEventsByPlayerId") || uri.startsWith("/TENNISAPP/getUpcommingTournament") || uri.startsWith("/TENNISAPP/playerhome") || uri.startsWith("/TENNISAPP/showTournament") || uri.startsWith("/TENNISAPP/tournamentDetails") || uri.startsWith("/TENNISAPP/view_list") || uri.startsWith("/TENNISAPP/playerView/addSecondPlayer")
+			 if(uri.startsWith("/TENNISAPP/payment")||uri.startsWith("/TENNISAPP/upcomingtournament")|| uri.startsWith("/TENNISAPP/getPlayerResultsByPlayerId")||uri.startsWith("/TENNISAPP/getRegisteredEventsByPlayerId") || uri.startsWith("/TENNISAPP/getUpcommingTournament") || uri.startsWith("/TENNISAPP/playerhome") || uri.startsWith("/TENNISAPP/showTournament") || uri.startsWith("/TENNISAPP/tournamentDetails") || uri.startsWith("/TENNISAPP/view_list") || uri.startsWith("/TENNISAPP/playerView/addSecondPlayer")
 					 || uri.startsWith("/TENNISAPP/playerView") || uri.startsWith("/TENNISAPP/adminlogout") || uri.startsWith("/TENNISAPP/view_academy_list") 
 					 || uri.startsWith("/TENNISAPP/playerlogout") || uri.startsWith("/TENNISAPP/registerPlayerForTournamentCategory") || uri.startsWith("/TENNISAPP/redirectToShowTournament") || uri.startsWith("/TENNISAPP/settings") || uri.startsWith("/TENNISAPP/changePassword") || uri.startsWith("/TENNISAPP/profile") || uri.startsWith("/TENNISAPP/changeOrgPassword") || uri.startsWith("/TENNISAPP/orgProfile") || uri.startsWith("/TENNISAPP/orgSetting") || uri.startsWith("/TENNISAPP/editTournament")  || uri.startsWith("/TENNISAPP/redirectToOrgTournamentView")){
 				 System.out.println("Players:::::::");
